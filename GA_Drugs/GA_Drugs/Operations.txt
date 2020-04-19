@@ -1,0 +1,112 @@
+Genetic Algorithms
+Generational
+Steady-State
+/////////////////////
+Generation Number - A termination method that stops the evolution when the user-specified max number of evolutions have been run. This termination method is always active.
+
+Evolution Time - A termination method that stops the evolution when the elapsed evolution time exceeds the user-specified max evolution time. By default, the evolution is not stopped until the evolution of the current generation has completed, but this behavior can be changed so that the evolution can be stopped within a generation.
+
+Fitness Threshold - A termination method that stops the evolution when the best fitness in the current population becomes less than the user-specified fitness threshold and the objective is set to minimize the fitness. This termination method also stops the evolution when the best fitness in the current population becomes greater than the user-specified fitness threshold when the objective is to maximize the fitness.
+
+Fitness Convergence - A termination method that stops the evolution when the fitness is deemed as converged. Two filters of different lengths are used to smooth the best fitness across the generations. When the smoothed best fitness from the long filter is less than a user-specified percentage away from the smoothed best fitness from the short filter, the fitness is deemed as converged and the evolution terminates.
+
+Population Convergence - A termination method that stops the evolution when the population is deemed as converged. 
+The population is deemed as converged when the average fitness across the current population is less than a user-specified percentage away from the best fitness of the current population.
+
+Gene Convergence - A termination method that stops the evolution when a user-specified percentage of the genes that make up a chromosome are deemed as converged. A gene is deemed as converged when the average value of that gene across all of the chromosomes in the current population is less than a user-specified percentage away from the maximum gene value across the chromosomes.
+
+/////////////////////////////
+
+Roulette - A selection operator in which the chance of a chromosome getting selected is proportional to its fitness (or rank). This is where the concept of survival of the fittest comes into play.
+
+Tournament - A selection operator which uses roulette selection N times to produce a tournament subset of chromosomes. The best chromosome in this subset is then chosen as the selected chromosome. This method of selection applies addition selective pressure over plain roulette selection.
+
+Top Percent - A selection operator which randomly selects a chromosome from the top N percent of the population as specified by the user.
+
+Best - A selection operator which selects the best chromosome (as determined by fitness). If there are two or more chromosomes with the same best fitness, one of them is chosen randomly.
+
+Random - A selection operator which randomly selects a chromosome from the population.
+
+///////////////////////////////////////////////////////////////
+
+One Point 
+A crossover operator that randomly selects a crossover point within a chromosome then interchanges the two parent chromosomes at this point to produce two new offspring.
+
+Consider the following 2 parents which have been selected for crossover. The ¡§|¡¨ symbol indicates the randomly chosen crossover point.
+
+Parent 1: 11001|010
+Parent 2: 00100|111
+
+After interchanging the parent chromosomes at the crossover point, the following offspring are produced:
+
+Offspring1: 11001|111
+Offspring2: 00100|010
+
+Two Point 
+A crossover operator that randomly selects two crossover points within a chromosome then interchanges the two parent chromosomes between these points to produce two new offspring.
+
+Consider the following 2 parents which have been selected for crossover. The ¡§|¡¨ symbols indicate the randomly chosen crossover points.
+
+Parent 1: 110|010|10
+Parent 2: 001|001|11
+
+After interchanging the parent chromosomes between the crossover points, the following offspring are produced:
+
+Offspring1: 110|001|10
+Offspring2: 001|010|11
+
+Uniform 
+A crossover operator that decides (with some probability ¡V know as the mixing ratio) which parent will contribute each of the gene values in the offspring chromosomes. This allows the parent chromosomes to be mixed at the gene level rather than the segment level (as with one and two point crossover). For some problems, this additional flexibility outweighs the disadvantage of destroying building blocks.
+
+Consider the following 2 parents which have been selected for crossover:
+
+Parent 1: 11001010
+Parent 2: 00100111
+
+If the mixing ratio is 0.5, approximately half of the genes in the offspring will come from parent 1 and the other half will come from parent 2. Below is a possible set of offspring after uniform crossover:
+
+Offspring1: 
+Offspring2:	
+Note: The subscripts indicate which parent the gene came from.
+
+Arithmetic 
+A crossover operator that linearly combines two parent chromosome vectors to produce two new offspring according to the following equations:
+
+Offspring1 = a * Parent1 + (1- a) * Parent2
+Offspring2 = (1 ¡V a) * Parent1 + a * Parent2
+
+
+where a is a random weighting factor (chosen before each crossover operation).
+
+Consider the following 2 parents (each consisting of 4 float genes) which have been selected for crossover:
+
+Parent 1: (0.3)(1.4)(0.2)(7.4)
+Parent 2: (0.5)(4.5)(0.1)(5.6)
+
+If a = 0.7, the following two offspring would be produced:
+
+Offspring1: (0.36)(2.33)(0.17)(6.86)
+Offspring2: (0.402)(2.981)(0.149)(6.842)
+
+Heuristic
+A crossover operator that uses the fitness values of the two parent chromosomes to determine the direction of the search. The offspring are created according to the following equations:
+
+Offspring1 = BestParent + r * (BestParent ¡V WorstParent)
+Offspring2 = BestParent
+
+
+where r is a random number between 0 and 1.
+
+It is possible that Offspring1 will not be feasible. This can happen if r is chosen such that one or more of its genes fall outside of the allowable upper or lower bounds. For this reason, heuristic crossover has a user settable parameter (n) for the number of times to try and find an r that results in a feasible chromosome. If a feasible chromosome is not produced after n tries, the WorstParent is returned as Offspring1.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Flip Bit -A mutation operator that simply inverts the value of the chosen gene (0 goes to 1 and 1 goes to 0). This mutation operator can only be used for binary genes.
+
+Boundary - A mutation operator that replaces the value of the chosen gene with either the upper or lower bound for that gene (chosen randomly). This mutation operator can only be used for integer and float genes.
+
+Non-Uniform - A mutation operator that increases the probability that the amount of the mutation will be close to 0 as the generation number increases. This mutation operator keeps the population from stagnating in the early stages of the evolution then allows the genetic algorithm to fine tune the solution in the later stages of evolution. This mutation operator can only be used for integer and float genes.
+
+Uniform - A mutation operator that replaces the value of the chosen gene with a uniform random value selected between the user-specified upper and lower bounds for that gene. This mutation operator can only be used for integer and float genes.
+
+Gaussian - A mutation operator that adds a unit Gaussian distributed random value to the chosen gene. The new gene value is clipped if it falls outside of the user-specified lower or upper bounds for that gene. This mutation operator can only be used for integer and float genes.

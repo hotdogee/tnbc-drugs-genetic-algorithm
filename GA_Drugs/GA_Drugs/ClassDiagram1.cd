@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GA_Drugs.App" Collapsed="true">
+    <Position X="2.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.DataTools">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.Database">
+    <Position X="3" Y="0.75" Width="2.25" />
+    <AssociationLine Name="Drugs" Type="GA_Drugs.Drug" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="1.062" />
+        <Point X="2" Y="1.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.163" Y="0.018" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAFAABARIAAAAAAAAAQAIAAAGAA0ACABACAAAgAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Drugs" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GA_Drugs.Drug">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAQAAAAAEAAAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.DomainKnowledge">
+    <Position X="6" Y="0.75" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="GA_Drugs.DomainKnowledge.Chromosome">
+        <TypeIdentifier>
+          <NewMemberFileName>DomainKnowledge.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="GA_Drugs.DomainKnowledge.FitnessComparer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DomainKnowledge.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" Collapsed="true" />
+      </Class>
+      <Class Name="GA_Drugs.DomainKnowledge.FitnessEqualityComparer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DomainKnowledge.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" Collapsed="true" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainKnowledge.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_db" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GA_Drugs.GeneticAlgorithmTask">
+    <Position X="10.75" Y="0.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="GA_Drugs.GeneticAlgorithmTask.Selection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GeneticAlgorithmTask.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAIIAAAACgAEIAAIECAAQQAiAAAAAgAAAAAhACkEAQ=</HashCode>
+      <FileName>GeneticAlgorithmTask.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="DomainKnowledge" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GA_Drugs.GeneticAlgorithmEngine">
+    <Position X="13.75" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="_dmk" Type="GA_Drugs.DomainKnowledge" FixedFromPoint="true">
+      <Path>
+        <Point X="13.75" Y="0.715" />
+        <Point X="13" Y="0.715" />
+        <Point X="13" Y="0.5" />
+        <Point X="7.5" Y="0.5" />
+        <Point X="7.5" Y="0.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.075" Y="1.089" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_task" Type="GA_Drugs.GeneticAlgorithmTask" FixedFromPoint="true">
+      <Path>
+        <Point X="13.75" Y="1.647" />
+        <Point X="12.75" Y="1.647" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.281" Y="0.097" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_population" Type="GA_Drugs.GeneticAlgorithmPopulation" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.75" Y="2.793" />
+        <Point X="13.375" Y="2.793" />
+        <Point X="13.375" Y="6.312" />
+        <Point X="12.25" Y="6.312" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="0.176" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AEgoJAAAADQAAgAIAABAAAQCAAAAAIAAIAAAAAAAgAQ=</HashCode>
+      <FileName>GeneticAlgorithmEngine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dmk" />
+      <Field Name="_task" />
+      <Field Name="_population" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GA_Drugs.MainWindow" Collapsed="true">
+    <Position X="4" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Class Name="GA_Drugs.MainWindow.TaskManager" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="GA_Drugs.MainWindow.Task2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAAAEABDAAQggEAABgAEAQAAAAAhAEAAmhAUAQAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.Properties.Resources" Collapsed="true">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAABCAAAAAAAAAAACAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.DoWorkReport">
+    <Position X="13.75" Y="3.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>GeneticAlgorithmEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GA_Drugs.GeneticAlgorithmPopulation">
+    <Position X="9.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAIAAQAAAAAAAAAAAAAAAAAAAABEAQAAAAACAAAA=</HashCode>
+      <FileName>GeneticAlgorithmPopulation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_task" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Microsoft JhengHei" Size="9" />
+</ClassDiagram>
